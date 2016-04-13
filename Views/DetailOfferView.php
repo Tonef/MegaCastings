@@ -61,7 +61,7 @@
                     <img src="http://placehold.it/1000x1000?text=<?php echo $annonceur["Libelle"]; ?>" class="img-responsive" style="width:100%;padding:10px;" alt="Image">
                 <?php } ?>
             </div>
-            <div class="col-md-offset-1 col-md-9">
+            <div class="col-md-offset-1 col-md-10">
                 <div class="row">
                     <?php echo "<strong>" . $annonceur['Libelle'] . "</strong>"; ?>
                 </div>
@@ -100,6 +100,9 @@
             </div>
             <div class="row">
                 Date de début de contrat : <?php echo (new DateTime($offer["DateDebutContrat"]))->format("d/m/Y"); ?>
+            </div>
+            <div class="row">
+                Type de contrat : <?php echo getTypeContratById($dataBase, $offer["IdentifiantTypeContrat"])["Label"]; ?>
             </div>
             <div class="row">
                 <div class="panel panel-default">
