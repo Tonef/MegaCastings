@@ -24,7 +24,6 @@
         </style>
     </head>
     <body>
-
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -38,7 +37,7 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
                         <li><a href="index.php">Accueil</a></li>
-                        <li class="active"><a href="listoffers.php">Toutes les offres</a></li>
+                        <li><a href="listoffers.php">Toutes les offres</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"><span class="glyphicon glyphicon-triangle-right"></span> Devenir partenaire de diffusion</a></li>
@@ -48,42 +47,9 @@
             </div>
         </nav>
 
-        <ul class="list-group col-md-offset-2 col-md-8 col-sm-offset-0 col-sm-12">
-            <?php foreach ($listOffers as $offer) { ?>
-            <a href="detailOffer.php?id=<?php echo $offer["Identifiant"]; ?>" style="text-decoration: none;color: black;">
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <?php
-                            $file = "./img/logo_client/logo" . $offer["Identifiant"];
-                            if (file_exists($file)) {
-                            ?>
-                                <img src="<?php echo $file; ?>" class="img-responsive" style="width:100%" alt="Image">
-                            <?php }
-                            else {
-                            ?>
-                                <img src="http://placehold.it/150x80?text=<?php echo $offer["Intitule"]; ?>" class="img-responsive" style="width:100%" alt="Image">
-                            <?php } ?>
-                        </div>
-                        <div class="col-xs-9">
-                            <div class="col-sm-12" style="border-bottom: 1px solid;">
-                                <?php echo $offer["Intitule"]; ?>
-                            </div>
-                            <div class="col-sm-12">
-                                <?php echo getAnnonceurById($dataBase, $offer["IdentifiantAnnonceur"])["Libelle"]; ?>
-                            </div>
-                            <div class="col-sm-12">
-                                <?php echo getDomaineById($dataBase, $offer["IdentifiantDomaine"])["Label"]; ?>
-                            </div>
-                            <div class="col-sm-12">
-                                <?php echo getMetierById($dataBase, $offer["IdentifiantMetier"])["Label"]; ?>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </a>
-            <?php } ?>
-        </ul>
+        <div class="text-center">
+           <h1>La page que vous cherchez n'existe pas ou n'existe plus.</h1> 
+        </div>
 
         <!-- Insertion fichiers JS -->
         <script src="js/jquery.min.js"></script>

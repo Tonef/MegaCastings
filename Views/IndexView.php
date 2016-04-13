@@ -24,7 +24,6 @@
         </style>
     </head>
     <body>
-
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -41,7 +40,7 @@
                         <li><a href="listoffers.php">Toutes les offres</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Inscription</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-triangle-right"></span> Devenir partenaire de diffusion</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
                     </ul>
                 </div>

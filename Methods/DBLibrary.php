@@ -3,6 +3,7 @@
 function getDBConnection()
 {
     return new PDO("sqlsrv:Server=localhost;Database=MegaCasting", "sa", "sql2012");
+    //return new PDO("sqlsrv:Server=SRV04;Database=MegaCasting", "sa", "P@ssw0rd");
 }
 
 function getOffers($dataBase)
@@ -40,6 +41,15 @@ function getMetierById($dataBase, $id)
 function getAnnonceurById($dataBase, $id)
 {
     $query = $dataBase->prepare('SELECT * FROM [Annonceur] WHERE [Identifiant] = :id');
+    $query->bindParam(":id", $id);
+    $query->execute();
+    
+    return $query->fetch();
+}
+
+function getOfferById($dataBase, $id)
+{
+    $query = $dataBase->prepare('SELECT * FROM [Offre] WHERE [Identifiant] = :id');
     $query->bindParam(":id", $id);
     $query->execute();
     
