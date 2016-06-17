@@ -12,6 +12,13 @@ if (isset($_GET["id"])) {
     
     if ($offer != null) {
         $annonceur = getAnnonceurById($dataBase, $offer["IdentifiantAnnonceur"]);
+        
+        if (empty($_SESSION)) {
+            incrOfferNbVisitors($dataBase, $idOffer);
+        } else {
+            incrOfferNbVisitorsAuth($dataBase, $idOffer);
+        }
+        
         require './Views/DetailOfferView.php';
     } else {
         require './Views/NoFoundOfferView.php';
@@ -19,4 +26,3 @@ if (isset($_GET["id"])) {
 } else {
     require './Views/NoFoundOfferView.php';
 }
-

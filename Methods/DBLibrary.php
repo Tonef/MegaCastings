@@ -6,8 +6,8 @@
  */
 function getDBConnection()
 {
-    return new PDO("sqlsrv:Server=localhost;Database=MegaCasting", "sa", "sql2012");
-    //return new PDO("dblib:host=172.16.1.182;dbname=MegaCasting", "sa", "P@ssw0rd");
+    //return new PDO("sqlsrv:Server=SRV04;Database=MegaCasting", "sa", "P@ssw0rd");
+    return new PDO("dblib:host=172.16.1.182;dbname=MegaCasting", "sa", "P@ssw0rd");
 }
 
 // <editor-fold defaultstate="collapsed" desc="OFFER'S METHODS">
@@ -71,6 +71,34 @@ function getOfferById($dataBase, $id)
     $query->execute();
 
     return $query->fetch();
+}
+
+function incrOfferNbVisitors($dataBase, $id)
+{
+    $query = $dataBase->prepare('SELECT * FROM [Offre] WHERE [Identifiant] = :id');
+    $query->bindParam(":id", $id);
+    $query->execute();
+
+    $number = intval($query->fetch()['NbVisiteur']) + 1;
+
+    $query = $dataBase->prepare('UPDATE [Offre] SET [NbVisiteur] = :number WHERE [Identifiant] = :id');
+    $query->bindParam(":id", $id);
+    $query->bindParam(":number", $number);
+    $query->execute();
+}
+
+function incrOfferNbVisitorsAuth($dataBase, $id)
+{
+    $query = $dataBase->prepare('SELECT * FROM [Offre] WHERE [Identifiant] = :id');
+    $query->bindParam(":id", $id);
+    $query->execute();
+
+    $number = intval($query->fetch()['NbVisiteurAuthentifie']) + 1;
+
+    $query = $dataBase->prepare('UPDATE [Offre] SET [NbVisiteurAuthentifie] = :number WHERE [Identifiant] = :id');
+    $query->bindParam(":id", $id);
+    $query->bindParam(":number", $number);
+    $query->execute();
 }
 
 // </editor-fold>
@@ -156,6 +184,13 @@ function getAnnonceurById($dataBase, $id)
 
 // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="USER'S METHODS">
+function getUsers($dataBase)
+{
+    $query = $dataBase->prepare('SELECT * FROM [User]');
+    $query->execute();
+    return $query;
+}
+
 function getUserByEmail($dataBase, $email)
 {
     $query = $dataBase->prepare('SELECT * FROM [User] WHERE [email] = :email');
@@ -163,6 +198,20 @@ function getUserByEmail($dataBase, $email)
     $query->execute();
 
     return $query->fetch();
+}
+
+function incrUserNbConnexion($dataBase, $id)
+{
+    $query = $dataBase->prepare('SELECT * FROM [User] WHERE [Identifiant] = :id');
+    $query->bindParam(":id", $id);
+    $query->execute();
+
+    $number = intval($query->fetch()['NbConnexion']) + 1;
+
+    $query = $dataBase->prepare('UPDATE [User] SET [NbConnexion] = :number WHERE [Identifiant] = :id');
+    $query->bindParam(":id", $id);
+    $query->bindParam(":number", $number);
+    $query->execute();
 }
 
 // </editor-fold>

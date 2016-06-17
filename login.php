@@ -23,6 +23,8 @@ if (!empty($_GET)) {
                 $_SESSION["userPassword"] = $user["Password"];
                 $_SESSION["userName"] = $user["Name"];
                 
+                incrUserNbConnexion($dataBase, $_SESSION["userIdentifiant"]);
+                
                 header('Location: ./index.php');
             }            
         }
