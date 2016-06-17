@@ -2,6 +2,8 @@
 
 include './Methods/DBLibrary.php';
 
+session_start();
+
 $dataBase = getDBConnection();
 
 if (!empty($_GET)) {

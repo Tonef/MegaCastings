@@ -24,6 +24,7 @@
         </style>
     </head>
     <body>
+
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -48,8 +49,17 @@
             </div>
         </nav>
 
-        <div class="text-center">
-           <h1>La page que vous cherchez n'existe pas ou n'existe plus.</h1> 
+        <div class="container col-md-offset-2 col-md-8">
+            <h2>Partenaire de diffusion</h2>
+            
+            <h3>Qu'est-ce que c'est ?</h3>
+            <p class="text-justify">
+                Un partenaire de diffusion est un groupe ou une entreprise voulant faire partager les offres de castings sur leur propre site web. Ce partage se fait grâce à un flux RSS (XML) uniquement accessible par eux. Ce partage permet aux artistes de trouver plus facilement des offres qui les interresses.
+            </p>            
+            <h3>Comment le devenir ?</h3>
+            <p class="text-justify">
+                Pour devenir partenaire de diffusion il faut envoyer une demande à l'adresse suivante : <span style="color:blue;">megacastings@megaproduction.local</span>. La demande devra comporter le nom de l'entreprise représentée ainsi que ses motivation pour devenir partenaire de diffusion.
+            </p>
         </div>
 
         <!-- Insertion fichiers JS -->

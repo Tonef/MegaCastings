@@ -2,6 +2,8 @@
 
 include './Methods/DBLibrary.php';
 
+session_start();
+
 if (isset($_GET["id"])) {
     $dataBase = getDBConnection();
     $idOffer = $_GET["id"];

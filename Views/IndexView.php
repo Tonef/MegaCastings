@@ -40,8 +40,9 @@
                         <li><a href="listoffers.php">Toutes les offres</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-triangle-right"></span> Devenir partenaire de diffusion</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
+                        <li><a href="partner.php"><span class="glyphicon glyphicon-triangle-right"></span> Devenir partenaire de diffusion</a></li>
+                        <?php if (empty($_SESSION)) { ?><li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li><?php } ?>
+                        <?php if (!empty($_SESSION)) { ?><li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Déconnexion</a></li><?php } ?>
                     </ul>
                 </div>
             </div>
@@ -63,24 +64,34 @@
 
         <div class="col-md-7">
             <div class="container-fluid bg-3 text-center">    
-                <h3>Dernières offres publiées...</h3><br>
+                <h3>
+                    Dernières offres publiées...
+                    <small>
+                        <?php if (!empty($_SESSION)) { ?>
+                            <a href="rss.php">
+                                <img src="./img/rss.png" alt="rss" style="height:20px;" />
+                            </a>
+                        <?php } ?>
+                    </small>
+                </h3><br>
                 <div class="row">
                     <?php foreach ($lastOffers as $offer) { ?>
-                    <a href="detailOffer.php?id=<?php echo $offer["Identifiant"]; ?>" style="text-decoration: none;color: black;">
-                        <div class="col-sm-4 col-xs-6">
-                            <p><?php echo $offer["Intitule"]; ?></p>
-                            <?php                            
-                            $file = "./img/logo_client/logo" . $offer["Identifiant"];
-                            if (file_exists($file)) {
-                                ?>
-                                <img src="<?php echo $file; ?>" class="img-responsive" style="width:100%" alt="Image">
-                            <?php }
-                            else {
-                                ?>
-                                <img src="http://placehold.it/150x80?text=<?php echo $offer["Intitule"]; ?>" class="img-responsive" style="width:100%" alt="Image">
-                            <?php } ?>
-                        </div>
-                    </a>
+                        <a href="detailOffer.php?id=<?php echo $offer["Identifiant"]; ?>" style="text-decoration: none;color: black;">
+                            <div class="col-sm-4 col-xs-6">
+                                <p><?php echo $offer["Intitule"]; ?></p>
+                                <?php
+                                $file = "./img/logo_client/logo" . $offer["Identifiant"];
+                                if (file_exists($file)) {
+                                    ?>
+                                    <img src="<?php echo $file; ?>" class="img-responsive" style="width:100%" alt="Image">
+                                    <?php
+                                }
+                                else {
+                                    ?>
+                                    <img src="http://placehold.it/150x80?text=<?php echo $offer["Intitule"]; ?>" class="img-responsive" style="width:100%" alt="Image">
+                                <?php } ?>
+                            </div>
+                        </a>
                     <?php } ?>
                 </div>
             </div>

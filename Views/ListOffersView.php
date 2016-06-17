@@ -41,8 +41,9 @@
                         <li class="active"><a href="listoffers.php">Toutes les offres</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-triangle-right"></span> Devenir partenaire de diffusion</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
+                        <li><a href="partner.php"><span class="glyphicon glyphicon-triangle-right"></span> Devenir partenaire de diffusion</a></li>
+                        <?php if (empty($_SESSION)) { ?><li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li><?php } ?>
+                        <?php if (!empty($_SESSION)) { ?><li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Déconnexion</a></li><?php } ?>
                     </ul>
                 </div>
             </div>
